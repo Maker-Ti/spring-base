@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maker.demo.mapper.OperateMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.maker.demo.entity.Operate">
+        <id column="id" property="id" />
+        <result column="time" property="time" />
+        <result column="content" property="content" />
+        <result column="object" property="object" />
+        <result column="opreator" property="opreator" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maker.demo.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.maker.demo.entity.User">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="introduction" property="introduction" />
+        <result column="sex" property="sex" />
+        <result column="token" property="token" />
+        <result column="tel" property="tel" />
+        <result column="mail" property="mail" />
+        <result column="age" property="age" />
+        <result column="name" property="name" />
+    </resultMap>
+    <select id="userLogin" parameterType="com.maker.demo.entity.User" resultType="com.maker.demo.entity.User">
+        select * from user  where `username` = #{username} and `password`=#{password}
+    </select>
+    <select id="getUserByUserName" resultType="com.maker.demo.entity.User">
+select id,username,tel,mail,sex,age,name,introduction
+  from user
+  where `username` = #{username}
+    </select>
+
+</mapper>
