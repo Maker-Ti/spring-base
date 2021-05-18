@@ -6,13 +6,37 @@
     <resultMap id="BaseResultMap" type="com.maker.demo.entity.Library">
         <id column="id" property="id" />
         <result column="creator" property="creator" />
-        <result column="authority" property="authority" />
+        <result column="info" property="info" />
         <result column="type" property="type" />
         <result column="content" property="content" />
         <result column="name" property="name" />
+        <result column="time" property="time" />
+        <result column="mutable" property="mutable" />
     </resultMap>
-    <select id="getLibraryList" resultType="com.maker.demo.entity.Library">
-        select id,authority,type,name from library where `creator` = #{creator}
+    <resultMap id="messageReturn" type="com.maker.demo.entity.MessageReturn">
+        <id column="id" property="id" />
+        <result column="time" property="time" />
+        <result column="username" property="username" />
+        <result column="name" property="name" />
+        <result column="info" property="info" />
+        <result column="token" property="token" />
+
+    </resultMap>
+    <select id="getRecomLib" resultMap="messageReturn">
+        select library.id,library.time,library.name,library.info,library.creator,user.username,user.token from library,user where  library.id in (${query,jdbcType=VARCHAR}) and library.creator = user.id
+
     </select>
+    <select id="getLibraryList" resultType="com.maker.demo.entity.Library">
+        select id,info,type,name,time,mutable from library where `creator` = #{creator}
+    </select>
+    <select id="getJoinedLibrary"  resultType="com.maker.demo.entity.Library">
+select id,info,type,name,time,mutable from library where id in
+(select library from authority  where `partner` = #{partner})
+
+    </select>
+    <select id="searchInfo" resultMap="messageReturn">
+        select library.id,library.time,library.name,library.info,library.creator,user.username,user.token from library,user where library.name like "%"#{info}"%" and library.creator = user.id
+    </select>
+
 
 </mapper>

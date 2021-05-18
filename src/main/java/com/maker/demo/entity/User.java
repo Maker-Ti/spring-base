@@ -13,6 +13,15 @@ import java.io.Serializable;
  * @since 2021-04-19
  */
 public class User implements Serializable {
+    public User(){
+
+    }
+    public User(String username, String password, String tel, String mail) {
+        this.username = username;
+        this.password = password;
+        this.tel = tel;
+        this.mail = mail;
+    }
 
     private static final long serialVersionUID=1L;
 

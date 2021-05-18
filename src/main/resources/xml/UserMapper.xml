@@ -19,9 +19,12 @@
         select * from user  where `username` = #{username} and `password`=#{password}
     </select>
     <select id="getUserByUserName" resultType="com.maker.demo.entity.User">
-select id,username,tel,mail,sex,age,name,introduction
+select id,username,tel,mail,sex,age,name,introduction,token,following
   from user
   where `username` = #{username}
+    </select>
+    <select id="getFollowingUser" resultType="com.maker.demo.entity.User">
+        select username,token,introduction,id from user where  `id` in (${query,jdbcType=VARCHAR})
     </select>
 
 </mapper>

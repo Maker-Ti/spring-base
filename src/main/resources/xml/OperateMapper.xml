@@ -9,6 +9,20 @@
         <result column="content" property="content" />
         <result column="object" property="object" />
         <result column="opreator" property="opreator" />
+
     </resultMap>
+    <resultMap id="messageReturn" type="com.maker.demo.entity.MessageReturn">
+        <id column="id" property="id" />
+        <result column="time" property="time" />
+        <result column="content" property="content" />
+        <result column="username" property="username" />
+        <result column="name" property="name" />
+        <result column="token" property="token" />
+    </resultMap>
+    <select id="getRecentMsg" resultMap="messageReturn">
+SELECT library.`name`,operate.*,user.* FROM library,operate,user where operate.object in (select library.id FROM library where `creator` = #{partner}
+union SELECT authority.library FROM authority where `partner` = #{partner}) and operate.opreator = `user`.id and library.id = operate.object
+
+    </select>
 
 </mapper>

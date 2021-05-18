@@ -47,7 +47,7 @@ public class MysqlGenerator {
       //  strategy.setSuperEntityClass("com.example.demo.entity.BaseEntity");
         // strategy.setTablePrefix("t_"); // 表名前缀
         strategy.setEntityLombokModel(false); //使用lombok
-        strategy.setInclude("word_data");  // 逆向工程使用的表   如果要生成多个,这里可以传入String[]
+        strategy.setInclude("library");  // 逆向工程使用的表   如果要生成多个,这里可以传入String[]
         mpg.setStrategy(strategy);
 
         //5、执行

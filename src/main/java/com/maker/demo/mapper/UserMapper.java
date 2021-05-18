@@ -3,6 +3,8 @@ package com.maker.demo.mapper;
 import com.maker.demo.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -14,4 +16,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 public interface UserMapper extends BaseMapper<User> {
     User userLogin(User record);
     User getUserByUserName(String username);
+    List<User> getFollowingUser(String query);
 }
